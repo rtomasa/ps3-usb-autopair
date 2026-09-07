@@ -1,0 +1,10 @@
+[Unit]
+Description=Pair PS3 controller on %I
+After=bluetooth.service
+Wants=bluetooth.service
+ConditionPathExists=/dev/%I
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/ps3-usb-autopair --pair /dev/%I
+TimeoutStartSec=45
